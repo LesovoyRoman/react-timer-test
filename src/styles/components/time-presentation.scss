@@ -1,0 +1,62 @@
+@import './../base/mixins';
+@import './../base/variables';
+
+@font-face {
+  font-family: $font-default-name;
+  src: url($font-default-path);
+}
+
+div.clock {
+  @include flex;
+  justify-content: center;
+  color: $list-default-color;
+  font-family: $font-default-name, sans-serif;
+  position: relative;
+
+  div p {
+    font-size: 100px;
+    position: relative;
+    z-index: 100;
+  }
+
+  .placeholder {
+    color: $list-default-color;
+    top: 0;
+    opacity: 0.2;
+    position: absolute;
+    z-index: 50;
+  }
+
+  &.clockList {
+    div p {
+      font-size: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: $break-tablet) {
+  div.clock {
+    div p {
+      font-size: 70px;
+    }
+    &.clockList {
+      div p {
+        font-size: 35px;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: $break-phone) {
+  div.clock {
+    div p {
+      font-size: 40px;
+    }
+    &.clockList {
+      div p {
+        font-size: 25px;
+      }
+    }
+  }
+}

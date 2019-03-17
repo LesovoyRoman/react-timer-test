@@ -1,0 +1,52 @@
+/**
+  App
+ */
+$app-color: #07070e;
+
+
+/**
+  Btns
+ */
+$btn-default-color: gray;
+$btn-default-bgcolor: transparent;
+$btn-hover-default-bgcolor: #d09b3a;
+$btn-border-default-color: gray;
+$btn-hover-border-default-color: #d09b3a;
+
+
+/**
+  Lists
+ */
+$list-default-color: gray;
+$list-hover-default-bgcolor: #5a5a5a52;
+
+
+/**
+	Radio
+ */
+$radio-label-default-color: gray;
+$radio-label-default-bgcolor: transparent;
+$radio-label-default-active-color: $app-color;
+$radio-label-default-active-bgcolor: gray;
+
+/**
+  Effects
+ */
+$transition-default: .2s ease;
+
+
+/**
+  Media breakpoints
+ */
+$break-tablet: 768px;
+$break-phone: 500px;
+
+
+/**
+	Fonts
+ */
+$font-default-name: 'digital-7';
+$font-default-path: 'fonts/' + $font-default-name + '.ttf'
+
+
+

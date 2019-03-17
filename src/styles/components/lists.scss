@@ -1,0 +1,10 @@
+@import './../base/mixins';
+
+.custom-list {
+  margin: 20px auto;
+  @include flex;
+
+  li {
+   @include listDefault;
+  }
+}
