@@ -5,7 +5,7 @@ import { shouldBeAddedToList, rebuildList } from '../../services/lists/listHelpe
 import ListComponent from './ListComponent';
 import { getTranslation, EN, LANGUAGE_OPTIONS } from '../../languages/languages';
 
-class List extends Component {
+export default class List extends Component {
   constructor(props) {
   super(props);
 
@@ -104,6 +104,11 @@ class List extends Component {
   }
 }
 
+/**
+ * Prop types of List
+ * @type {{list, currentTime: shim, btnAddToList: shim,
+ * btnRemoveAll: shim, classNames: shim, setTime: shim, lang: shim}}
+ */
 List.propTypes = {
   list: PropTypes.instanceOf(Array),
   currentTime: PropTypes.number,
@@ -123,5 +128,3 @@ List.defaultProps = {
   lang: EN,
 	setTime: () => {},
 };
-
-export default List;

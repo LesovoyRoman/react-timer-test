@@ -1,5 +1,4 @@
 import React from 'react';
-import { Time } from '../timer/partials/Time';
 import PropTypes from 'prop-types';
 import { ACTIVE_OPTION } from './listsConfig';
 
@@ -20,6 +19,11 @@ export default function ListComponent(props) {
     </ul>
   );
 }
+
+/**
+ * Prop type of ListComponent
+ * @type {{updateList: shim, list, classNames: shim}}
+ */
 ListComponent.propTypes = {
   updateList: PropTypes.func,
   list: PropTypes.instanceOf(Array),
