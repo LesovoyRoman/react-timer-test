@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Time } from '../timer/partials/Time';
 import { ACTIVE_OPTION } from './listsConfig';
+import { EN } from '../../languages/languages';
 
 /**
  * Render component of List
@@ -9,13 +11,20 @@ import { ACTIVE_OPTION } from './listsConfig';
  * @constructor
  */
 export default function ListComponent(props) {
-  const { updateList, list, classNames } = props;
+  const { updateList, list, classNames, setModalContent } = props;
   return (
     <ul className={`${classNames} custom-list`}>
-      {list.map((e) =>
-        <li key={e.time} className={e.active ? ACTIVE_OPTION : ''} onClick={() => updateList(e)}>
-          <Time currentTime={e.time} inList={true} />
-        </li>)}
+      {list.map(e =>
+        <li key={e.time} className={e.active ? ACTIVE_OPTION : ''}>
+          <Time
+            updateList={() => updateList(e)}
+            currentTime={e.time}
+            inList={true}
+            lang={props.lang}
+            setModalContent={content => setModalContent(content)}
+          />
+        </li>)
+      }
     </ul>
   );
 }
@@ -28,9 +37,13 @@ ListComponent.propTypes = {
   updateList: PropTypes.func,
   list: PropTypes.instanceOf(Array),
   classNames: PropTypes.string,
+  lang: PropTypes.string,
+  setModalContent: PropTypes.func,
 };
 ListComponent.defaultProps = {
   updateList: () => {},
   list: [],
   classNames: '',
+  lang: EN,
+  setModalContent: () => {},
 };

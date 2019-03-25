@@ -18,7 +18,8 @@ export default class List extends Component {
       btnAddToList: { ...this.props },
       btnRemoveAll: { ...this.props },
       setTime: this.props.setTime,
-      lang: this.props.lang
+      lang: this.props.lang,
+      setModalContent: this.props.setModalContent
     };
   }
 
@@ -95,9 +96,11 @@ export default class List extends Component {
           />
         }
         <ListComponent
+          lang={this.state.lang}
           updateList={this.updateList}
           classNames={this.props.classNames}
           list={this.state.list}
+          setModalContent={content => this.state.setModalContent(content)}
         />
       </>
     );
@@ -117,6 +120,7 @@ List.propTypes = {
   classNames: PropTypes.string,
 	setTime: PropTypes.func,
   lang: PropTypes.string,
+  setModalContent: PropTypes.func,
 };
 
 List.defaultProps = {
@@ -127,4 +131,5 @@ List.defaultProps = {
   classNames: '',
   lang: EN,
 	setTime: () => {},
+  setModalContent: () => {},
 };

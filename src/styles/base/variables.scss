@@ -30,6 +30,12 @@ $radio-label-default-active-color: $app-color;
 $radio-label-default-active-bgcolor: gray;
 
 /**
+  Modals
+ */
+$modal-overlay-bgcolor-default: rgba(19, 18, 18, 0.8);
+$modal-bg-default: rgb(56, 52, 52);
+
+/**
   Effects
  */
 $transition-default: .2s ease;

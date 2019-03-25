@@ -19,6 +19,7 @@ class Timer extends Component {
       timerStatus: 0,
       isResetting: 0,
       lang: this.props.lang,
+      setModalContent: this.props.setModalContent
     };
   }
 
@@ -97,6 +98,7 @@ class Timer extends Component {
           currentTime={this.state.currentTime}
           btnAddToList={true}
           btnRemoveAll={true}
+          setModalContent={content => this.state.setModalContent(content)}
           setTime={this.setTime}
           lang={this.state.lang}
         />
@@ -106,10 +108,12 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
-  lang: PropTypes.string
+  lang: PropTypes.string,
+  setModalContent: PropTypes.func,
 };
 Timer.defaultProps = {
-  lang: EN
+  lang: EN,
+  setModalContent: () => {},
 };
 
 export default Timer;

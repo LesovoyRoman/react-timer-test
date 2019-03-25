@@ -1,24 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import Input from './../inputs/Input';
+import { getTranslation, LANGUAGE_OPTIONS, EN } from '../../languages/languages';
 
-export default class Comment extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      managePanel: { ...this.props },
-      styles: { ...this.props },
-      classNames: { ...this.props },
-      text: { ...this.props },
-    };
-  }
+export default function Comment(props) {
+  const { lang, comment, onChange } = props;
+  const handleInput = event => onChange(event.target.value);
 
-  render() {
-    return (
-      <div className="Comment">
-        {/* @todo add comment body & CommentManagePanel */}
-      </div>
-    );
-  }
+  return (
+    <div className="Comment">
+      <Input
+        placeholder={getTranslation(lang, LANGUAGE_OPTIONS.COMMENT)}
+        value={comment}
+        onChange={event => handleInput(event)}
+      />
+    </div>
+  );
 }
 
 /**
@@ -26,12 +23,12 @@ export default class Comment extends Component {
  * @type {{classNames: shim, styles, text: shim}}
  */
 Comment.propTypes = {
-  classNames: PropTypes.string,
-  styles: PropTypes.instanceOf(Object),
-  text: PropTypes.string,
+  lang: PropTypes.string,
+  comment: PropTypes.string,
+  onChange: PropTypes.func,
 };
 Comment.defaultProps = {
-  classNames: '',
-  styles: {},
-  text: '',
+  lang: EN,
+  comment: '',
+  onChange: () => {},
 };
