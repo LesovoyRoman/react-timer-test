@@ -6,7 +6,7 @@ import ModalComponent from './components/modals/ModalComponent';
 
 export default function App() {
   const [lang, setLang] = useState(EN);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const setNewLang = newLang => setLang(newLang);
 
@@ -15,11 +15,11 @@ export default function App() {
       <LanguageChanger lang={lang} setLang={newLang => setNewLang(newLang)} />
       <Timer
         lang={lang}
-        setModalContent={content => { setModalContent(content()); setModalIsOpen(true); }}
+        setModalContent={(content) => { setModalContent(content()); setIsOpenModal(true); }}
       />
       <ModalComponent
-        isOpen={modalIsOpen}
-        onClose={() => setModalIsOpen(false)}
+        isOpen={isOpenModal}
+        onClose={() => setIsOpenModal(false)}
         lang={lang}
         Content={modalContent}
       />

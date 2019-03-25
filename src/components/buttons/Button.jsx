@@ -2,6 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DISABLED } from './buttonsConfig';
 
+const propTypesComponent = {
+  onClick: PropTypes.func,
+  classNames: PropTypes.string,
+  styles: PropTypes.instanceOf(Object),
+  disabled: PropTypes.bool,
+  label: PropTypes.string.isRequired,
+};
+
+const defaultPropsComponent = {
+  onClick: () => {},
+  classNames: '',
+  styles: {},
+  disabled: false,
+};
+
 /**
  * Custom button component
  * @param props
@@ -27,15 +42,8 @@ export default function Button(props) {
  * @type {{eventClick: *, classNames: *, styles: *, disabled: *, label: *}}
  */
 Button.propTypes = {
-  onClick: PropTypes.func,
-  classNames: PropTypes.string,
-  styles: PropTypes.instanceOf(Object),
-  disabled: PropTypes.bool,
-  label: PropTypes.string.isRequired,
+  ...propTypesComponent,
 };
 Button.defaultProps = {
-  onClick: () => {},
-  classNames: '',
-  styles: {},
-  disabled: false,
+  ...defaultPropsComponent,
 };

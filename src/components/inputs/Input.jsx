@@ -1,6 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const propTypesComponent = {
+  onChange: PropTypes.func,
+  classNames: PropTypes.string,
+  value: PropTypes.string,
+  styles: PropTypes.instanceOf(Object),
+  disabled: PropTypes.bool,
+  placeholder: PropTypes.string,
+};
+const defaultPropsComponent = {
+  onChange: () => {},
+  classNames: '',
+  value: '',
+  styles: {},
+  placeholder: '',
+  disabled: false,
+};
+
 export default function Input(props) {
   const { value, classNames, styles, onChange, placeholder, disabled } = props;
 
@@ -22,18 +39,8 @@ export default function Input(props) {
  * lassNames: shim, value: shim, styles, disabled: shim, placeholder: shim}}
  */
 Input.propTypes = {
-  onChange: PropTypes.func,
-  classNames: PropTypes.string,
-  value: PropTypes.string,
-  styles: PropTypes.instanceOf(Object),
-  disabled: PropTypes.bool,
-  placeholder: PropTypes.string,
+  ...propTypesComponent,
 };
 Input.defaultProps = {
-  onChange: () => {},
-  classNames: '',
-  value: '',
-  styles: {},
-  placeholder: '',
-  disabled: false,
+  ...defaultPropsComponent,
 };

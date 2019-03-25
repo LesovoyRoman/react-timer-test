@@ -3,3 +3,9 @@
 .button-custom {
   @include buttonDefault;
 }
+.comment-button {
+  font-size: 10px;
+  height: auto;
+  min-width: auto;
+  float: right;
+}

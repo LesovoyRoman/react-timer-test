@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import Button from '../buttons/Button';
 import List from '../lists/List';
-import { Time } from './partials/Time';
+import Time from './partials/Time';
 import { timerCounter } from '../../services/timer/timerCounter';
 import PropTypes from 'prop-types';
 import { EN, getTranslation, LANGUAGE_OPTIONS } from '../../languages/languages';
 import { delayMilliseconds } from '../../services/timer/timerConfig';
 
+const propTypesComponent = {
+  lang: PropTypes.string,
+  setModalContent: PropTypes.func,
+};
 
-class Timer extends Component {
+const defaultPropsComponent = {
+  lang: EN,
+  setModalContent: () => {},
+};
+
+export default class Timer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +28,6 @@ class Timer extends Component {
       timerStatus: 0,
       isResetting: 0,
       lang: this.props.lang,
-      setModalContent: this.props.setModalContent
     };
   }
 
@@ -98,7 +106,7 @@ class Timer extends Component {
           currentTime={this.state.currentTime}
           btnAddToList={true}
           btnRemoveAll={true}
-          setModalContent={content => this.state.setModalContent(content)}
+          setModalContent={content => this.props.setModalContent(content)}
           setTime={this.setTime}
           lang={this.state.lang}
         />
@@ -108,12 +116,8 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
-  lang: PropTypes.string,
-  setModalContent: PropTypes.func,
+  ...propTypesComponent,
 };
 Timer.defaultProps = {
-  lang: EN,
-  setModalContent: () => {},
+  ...defaultPropsComponent,
 };
-
-export default Timer;

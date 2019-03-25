@@ -2,6 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DISABLED } from './buttonsConfig';
 
+const propTypesComponent = {
+  onChange: PropTypes.func,
+  classNames: PropTypes.string,
+  styles: PropTypes.instanceOf(Object),
+  disabled: PropTypes.bool,
+  value: PropTypes.string,
+  checked: PropTypes.bool,
+};
+
+const defaultPropsComponent = {
+  onChange: () => {},
+  classNames: '',
+  styles: {},
+  disabled: false,
+  checked: false,
+  value: 'radio',
+};
+
 /**
  * Custom radio input component
  * @param props
@@ -33,18 +51,8 @@ export default function Radio(props) {
  * @type {{eventClick: *, classNames: *, styles: *, disabled: *, label: *}}
  */
 Radio.propTypes = {
-  onChange: PropTypes.func,
-  classNames: PropTypes.string,
-  styles: PropTypes.instanceOf(Object),
-  disabled: PropTypes.bool,
-  value: PropTypes.string,
-  checked: PropTypes.bool,
+  ...propTypesComponent,
 };
 Radio.defaultProps = {
-  onChange: () => {},
-  classNames: '',
-  styles: {},
-  disabled: false,
-  checked: false,
-  value: 'radio',
+  ...defaultPropsComponent,
 };

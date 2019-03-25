@@ -4,6 +4,15 @@ import Radio from './../../components/buttons/Radio';
 import { EN, RU, UA } from './../../languages/languages';
 import { ACTIVE } from "./languagesConfig";
 
+const propTypesComponent = {
+  lang: PropTypes.string,
+  setLang: PropTypes.func,
+};
+const defaultPropsComponent = {
+  lang: EN,
+  setLang: () => {},
+};
+
 /**
  * Language component (change RU / EN / UA)
  * @param props
@@ -16,27 +25,28 @@ export default function LanguageChanger(props) {
     <div className="lang-changer">
       <Radio
         classNames={lang === EN ? ACTIVE : ''}
-        checked={lang === EN} value={EN}
+        checked={lang === EN}
+        value={EN}
         onChange={event => setLang(event.target.value)}
       />
       <Radio
         classNames={lang === RU ? ACTIVE : ''}
-        checked={lang === RU} value={RU}
+        checked={lang === RU}
+        value={RU}
         onChange={event => setLang(event.target.value)}
       />
       <Radio
         classNames={lang === UA ? ACTIVE : ''}
-        checked={lang === UA} value={UA}
+        checked={lang === UA}
+        value={UA}
         onChange={event => setLang(event.target.value)}
       />
     </div>
-  )
+  );
 }
 LanguageChanger.propTypes = {
-  lang: PropTypes.string,
-  setLang: PropTypes.func,
+  ...propTypesComponent,
 };
 LanguageChanger.defaultProps = {
-  lang: EN,
-  setLang: () => {},
+  ...defaultPropsComponent,
 };

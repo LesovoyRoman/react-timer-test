@@ -3,6 +3,17 @@ import PropTypes from 'prop-types';
 import Input from './../inputs/Input';
 import { getTranslation, LANGUAGE_OPTIONS, EN } from '../../languages/languages';
 
+const propTypesComponent = {
+  lang: PropTypes.string,
+  comment: PropTypes.string,
+  onChange: PropTypes.func,
+};
+const defaultPropsComponent = {
+  lang: EN,
+  comment: '',
+  onChange: () => {},
+};
+
 export default function Comment(props) {
   const { lang, comment, onChange } = props;
   const handleInput = event => onChange(event.target.value);
@@ -10,6 +21,7 @@ export default function Comment(props) {
   return (
     <div className="Comment">
       <Input
+        classNames="input-custom"
         placeholder={getTranslation(lang, LANGUAGE_OPTIONS.COMMENT)}
         value={comment}
         onChange={event => handleInput(event)}
@@ -23,12 +35,8 @@ export default function Comment(props) {
  * @type {{classNames: shim, styles, text: shim}}
  */
 Comment.propTypes = {
-  lang: PropTypes.string,
-  comment: PropTypes.string,
-  onChange: PropTypes.func,
+  ...propTypesComponent,
 };
 Comment.defaultProps = {
-  lang: EN,
-  comment: '',
-  onChange: () => {},
+  ...defaultPropsComponent,
 };

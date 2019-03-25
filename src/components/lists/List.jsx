@@ -5,6 +5,27 @@ import { shouldBeAddedToList, rebuildList } from '../../services/lists/listHelpe
 import ListComponent from './ListComponent';
 import { getTranslation, EN, LANGUAGE_OPTIONS } from '../../languages/languages';
 
+const propTypesComponent = {
+  list: PropTypes.instanceOf(Array),
+  currentTime: PropTypes.number,
+  btnAddToList: PropTypes.bool,
+  btnRemoveAll: PropTypes.bool,
+  classNames: PropTypes.string,
+  setTime: PropTypes.func,
+  lang: PropTypes.string,
+  setModalContent: PropTypes.func,
+};
+const defaultPropsComponent = {
+  list: [],
+  currentTime: 0,
+  btnAddToList: false,
+  btnRemoveAll: false,
+  classNames: '',
+  lang: EN,
+  setTime: () => {},
+  setModalContent: () => {},
+};
+
 export default class List extends Component {
   constructor(props) {
   super(props);
@@ -19,7 +40,6 @@ export default class List extends Component {
       btnRemoveAll: { ...this.props },
       setTime: this.props.setTime,
       lang: this.props.lang,
-      setModalContent: this.props.setModalContent
     };
   }
 
@@ -100,7 +120,7 @@ export default class List extends Component {
           updateList={this.updateList}
           classNames={this.props.classNames}
           list={this.state.list}
-          setModalContent={content => this.state.setModalContent(content)}
+          setModalContent={content => this.props.setModalContent(content)}
         />
       </>
     );
@@ -113,23 +133,9 @@ export default class List extends Component {
  * btnRemoveAll: shim, classNames: shim, setTime: shim, lang: shim}}
  */
 List.propTypes = {
-  list: PropTypes.instanceOf(Array),
-  currentTime: PropTypes.number,
-  btnAddToList: PropTypes.bool,
-  btnRemoveAll: PropTypes.bool,
-  classNames: PropTypes.string,
-	setTime: PropTypes.func,
-  lang: PropTypes.string,
-  setModalContent: PropTypes.func,
+  ...propTypesComponent,
 };
 
 List.defaultProps = {
-  list: [],
-  currentTime: 0,
-  btnAddToList: false,
-  btnRemoveAll: false,
-  classNames: '',
-  lang: EN,
-	setTime: () => {},
-  setModalContent: () => {},
+  ...defaultPropsComponent,
 };

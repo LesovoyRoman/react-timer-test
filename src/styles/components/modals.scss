@@ -2,7 +2,7 @@
 @import "../base/mixins";
 
 .ReactModal__Overlay {
-  background-color: $modal-overlay-bgcolor-default;
+  background-color: $modal-overlay-bgcolor-default !important;
   z-index: 999;
 }
 

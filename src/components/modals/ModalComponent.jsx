@@ -4,23 +4,29 @@ import Modal from 'react-modal';
 import Button from '../buttons/Button';
 import { getTranslation, LANGUAGE_OPTIONS, EN } from '../../languages/languages';
 
+const propTypesComponent = {
+  classNames: PropTypes.string,
+  Content: PropTypes.instanceOf(Object),
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  lang: PropTypes.string,
+};
+
+const defaultPropsComponent = {
+  onClose: () => {},
+  classNames: '',
+  Content: {},
+  isOpen: false,
+  lang: EN,
+};
+
 Modal.setAppElement('#root')
 
 export default function ModalComponent(props) {
   const { classNames, Content, isOpen, onClose, lang } = props;
-  const customStyles = {
-    content : {
-      top                   : '50%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)',
-    },
-  };
 
   return (
-    <Modal style={customStyles} className={classNames} isOpen={isOpen}>
+    <Modal className={classNames} isOpen={isOpen}>
       <Button
         label={getTranslation(lang, LANGUAGE_OPTIONS.CLOSE)}
         onClick={onClose}
@@ -35,16 +41,8 @@ export default function ModalComponent(props) {
  * @type {{onClick: shim, classNames: shim, styles, Content}}
  */
 ModalComponent.propTypes = {
-  classNames: PropTypes.string,
-  Content: PropTypes.instanceOf(Object),
-  isOpen: PropTypes.bool,
-  onClose: PropTypes.func,
-  lang: PropTypes.string,
+  ...propTypesComponent,
 };
 ModalComponent.defaultProps = {
-  onClose: () => {},
-  classNames: '',
-  Content: {},
-  isOpen: false,
-  lang: EN,
+  ...defaultPropsComponent,
 };

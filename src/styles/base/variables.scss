@@ -30,6 +30,13 @@ $radio-label-default-active-color: $app-color;
 $radio-label-default-active-bgcolor: gray;
 
 /**
+  Inputs
+ */
+$input-default-color: gray;
+$input-default-bgcolor: transparent;
+$input-default-border: 2px solid gray;
+
+/**
   Modals
  */
 $modal-overlay-bgcolor-default: rgba(19, 18, 18, 0.8);
